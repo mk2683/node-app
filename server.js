@@ -10,11 +10,11 @@ var {mongoose} = require("./server/db/mongoose");
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send({express: "Hello"});
+  res.send("Helo Mohit");
 })
 
 app.get("/user", (req, res) => {
-  res.send({express: "Hello Mohit Welcome here again and again Hope this Works !!"});
+  res.send({express: "Hello Mohit Welcome here again and again Hope this Works. finally it worked !!"});
 })
 
 app.listen(port, () => {
