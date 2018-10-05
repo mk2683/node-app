@@ -33,7 +33,11 @@ var userSchema = new mongoose.Schema({
 			type : String,
 			required : true
 		}
-	}]
+	}],
+
+	resetPasswordToken: String,
+
+    resetPasswordExpires: Date
 })
 
 userSchema.methods.toJSON = function (){
@@ -97,6 +101,7 @@ userSchema.pre("save", function(next){
 	}
 })
 
+//comparePassword
 userSchema.statics.findByCredentials = function (email, password) {
   var User = this;
 

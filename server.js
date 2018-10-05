@@ -6,16 +6,18 @@ var {ObjectID} = require("mongodb");
 var _          = require("lodash");
 var bcrypt     = require("bcryptjs");
 var cors       = require("cors");
+var flash      = require('express-flash');
 
 var {mongoose} = require("./db/mongoose");
 var indexRoute  = require("./routes/index");
 
 var app = express();
-app.use(bodyParser.json());
-app.use(cors());
 var port = process.env.PORT;
 
+app.use(bodyParser.json());
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(flash());
 
 app.use("/", indexRoute);
 

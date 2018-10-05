@@ -1,0 +1,12 @@
+{
+  "test": {
+    "PORT": 5000,
+    "MONGOLAB_URI": "mongodb://localhost:27017/MediEdgeTest",
+    "JWT_SECRET": "mosjlfdshlhlhgga743989rj"
+  },
+  "development": {
+    "PORT": 5000,
+    "MONGOLAB_URI": "mongodb://localhost:27017/MediEdge",
+    "JWT_SECRET": "ahgfjdhgh898tkjdfslkgjhl4"
+  }
+}
