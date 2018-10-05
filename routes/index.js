@@ -80,21 +80,21 @@ router.post('/forgotpassword', function(req, res, next) {
       });
       var mailOptions = {
         to: user.email,
-        from: 'mksujanian2683@gmail.com',
-        subject: 'Node.js Password Reset',
+        from: 'mediedge@gmail.com',
+        subject: 'Mediedge Password Reset',
         text: 'You are receiving this because someone (hopefully you) has requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/resetpassword/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-        done(err, 'done');
+        //req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        res.send(err);
+        //done(err, 'done');
       });
     }
   ], function(err) {
     if (err) return next(err);
-    res.redirect('/forgotpassword');
   });
 });
 
