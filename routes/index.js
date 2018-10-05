@@ -5,6 +5,10 @@ var _          = require("lodash");
 var {User}     = require("../models/user");
 var {authenticate} = require("../middlewares/authenticate");
 
+router.get("/", (req, res) => {
+  res.send("Mediedge");
+})
+
 
 router.post("/signup", (req, res) => {
   console.log(req.body.email);
@@ -14,8 +18,9 @@ router.post("/signup", (req, res) => {
 
   newUser.save().then(() => {
     return newUser.generateAuthToken();
-  }).then((token) => {
-    res.header("x-auth", token).send("success");
+  }).then((tok) => {
+    //res.header("x-auth", token).send("success");
+    res.status(200).send({token : tok});
   }).catch((e) => {
     console.log(e);
     res.status(400).send(e);
@@ -27,8 +32,9 @@ router.post('/signin', (req, res) => {
   var body = _.pick(req.body, ['email', 'password']);
 
   User.findByCredentials(body.email, body.password).then((user) => {
-    return user.generateAuthToken().then((token) => {
-      res.header('x-auth', token).send("success");
+    return user.generateAuthToken().then((tok) => {
+      //res.header('x-auth', token).send("success");
+      res.status(200).send({token : tok});
     });
   }).catch((e) => {
     console.log(e);
