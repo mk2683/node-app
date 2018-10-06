@@ -63,7 +63,7 @@ router.post('/forgotpassword', function(req, res, next) {
         }
 
         user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 1800000; // 1 hour
+        user.resetPasswordExpires = Date.now() + 1800000; // 30 min
 
         user.save(function(err) {
           done(err, token, user);
@@ -87,14 +87,74 @@ router.post('/forgotpassword', function(req, res, next) {
           'http://' + req.headers.host + '/resetpassword/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
+
       smtpTransport.sendMail(mailOptions, function(err) {
         //req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
         res.send(err);
-        //done(err, 'done');
+        done(err, 'done');
       });
     }
   ], function(err) {
     if (err) return next(err);
+  });
+});
+
+router.get('/resetpassword/:token', function(req, res) {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired.');
+      return res.redirect('/forgotpassword');
+    }
+    // res.render('reset', {
+    //   user: req.user
+    // });
+    var url = `https://mediedge1.herokuapp.com/resetpassword/${req.params.token}`;
+    res.redirect(url);
+  });
+});
+
+router.post('/resetpassword/:token', function(req, res) {
+  async.waterfall([
+    function(done) {
+      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'Password reset token is invalid or has expired.');
+          return res.redirect('back');
+        }
+
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+
+        user.save(function(err) {
+          req.signin(user, function(err) {
+            done(err, user);
+          });
+        });
+      });
+    },
+    function(user, done) {
+      var smtpTransport = nodemailer.createTransport('SMTP', {
+        service: 'SendGrid',
+        auth: {
+          user: 'mk2683',
+          pass: 'mohit2683'
+        }
+      });
+      var mailOptions = {
+        to: user.email,
+        from: 'mediedge@gmail.com',
+        subject: 'Your password has been changed',
+        text: 'Hello,\n\n' +
+          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+      };
+      smtpTransport.sendMail(mailOptions, function(err) {
+        //req.flash('success', 'Success! Your password has been changed.');
+        done(err);
+      });
+    }
+  ], function(err) {
+    res.redirect('/');
   });
 });
 
