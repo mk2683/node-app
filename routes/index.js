@@ -58,7 +58,7 @@ router.post('/forgotpassword', function(req, res, next) {
     function(token, done) {
       User.findOne({ email: req.body.email }, function(err, user) {
         if (!user) {
-          req.flash('error', 'No account with that email address exists.');
+          console.log('No account with that email address exists.');
           return res.redirect('/forgot');
         }
 
@@ -89,7 +89,7 @@ router.post('/forgotpassword', function(req, res, next) {
       };
 
       smtpTransport.sendMail(mailOptions, function(err) {
-        //req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        console.log('An e-mail has been sent to ' + user.email + ' with further instructions.');
         res.send(err);
         done(err, 'done');
       });
@@ -102,7 +102,7 @@ router.post('/forgotpassword', function(req, res, next) {
 router.get('/resetpassword/:token', function(req, res) {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     if (!user) {
-      req.flash('error', 'Password reset token is invalid or has expired.');
+      console.log('Password reset token is invalid or has expired.');
       return res.redirect('/forgotpassword');
     }
     // res.render('reset', {
@@ -118,18 +118,16 @@ router.post('/resetpassword/:token', function(req, res) {
     function(done) {
       User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
         if (!user) {
-          req.flash('error', 'Password reset token is invalid or has expired.');
+          console.log('Password reset token is invalid or has expired.');
           return res.redirect('back');
         }
 
         user.password = req.body.password;
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
-
+        console.log(user.password);
         user.save(function(err) {
-          req.signin(user, function(err) {
             done(err, user);
-          });
         });
       });
     },
@@ -149,9 +147,11 @@ router.post('/resetpassword/:token', function(req, res) {
           'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-        //req.flash('success', 'Success! Your password has been changed.');
+        console.log('Success! Your password has been changed.');
         done(err);
       });
+      console.log("success");
+      res.status(200).send("success");
     }
   ], function(err) {
     res.redirect('/');
