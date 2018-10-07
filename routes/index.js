@@ -132,7 +132,7 @@ router.post('/resetpassword/:token', function(req, res) {
       });
     },
     function(user, done) {
-      var smtpTransport = nodemailer.createTransport('SMTP', {
+      var smtpTransport = nodemailer.createTransport({
         service: 'SendGrid',
         auth: {
           user: 'mk2683',
