@@ -26,7 +26,7 @@ app.use(flash());
 // 	next();
 // })
 
-app.use("/profile", profileRoute);
+//app.use("/profile", profileRoute);
 app.use("/", indexRoute);
 
 app.listen(port, () => {
