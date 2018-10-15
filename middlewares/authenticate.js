@@ -1,7 +1,7 @@
 var {User} = require("../models/user.js");
 
 var authenticate = (req, res, next) => {
-	var token = req.header("Authorization");
+	var token = req.headers.Authorization.split(" ")[1];
 
 	User.findByToken(token).then((user) => {
 		if(!user){
