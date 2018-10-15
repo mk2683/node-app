@@ -6,16 +6,20 @@ var {Profile}     = require("../models/profile");
 var {authenticate} = require("../middlewares/authenticate");
 
 
-// router.get("/", authenticate, (req, res) => {
-//   Profile.find({
-//     user: req.user._id
-//   }).then((data) => {
-//     res.send({data});
-//     //res.render("data/data", {data});
-//   },(err) => {
-//     res.status(400).send(err);
-//   })
-// });
+router.get("/", authenticate, (req, res) => {
+      console.log(req.user);
+
+  Profile.find({
+    user : req.user._id
+
+  }).then((data) => {
+    console.log(data);
+    res.send({data});
+    //res.render("data/data", {data});
+  },(err) => {
+    res.status(400).send(err);
+  })
+});
 
 
 router.post("/", authenticate, function(req, res){
@@ -25,9 +29,7 @@ router.post("/", authenticate, function(req, res){
     var hospitalName = req.body.hospitalName;
     var city = req.body.city;
     var country = req.body.country;
-    var user = {
-      id: req.user._id
-    };
+    var user = req.user._id
     var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, user:user};
     Profile.create(newProfile, function(err, newlyCreated){
         if(err){
