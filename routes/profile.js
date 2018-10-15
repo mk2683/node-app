@@ -6,16 +6,16 @@ var {Profile}     = require("../models/profile");
 var {authenticate} = require("../middlewares/authenticate");
 
 
-router.get("/", authenticate, (req, res) => {
-  Profile.find({
-    user: req.user._id
-  }).then((data) => {
-    res.send({data});
-    //res.render("data/data", {data});
-  },(err) => {
-    res.status(400).send(err);
-  })
-});
+// router.get("/", authenticate, (req, res) => {
+//   Profile.find({
+//     user: req.user._id
+//   }).then((data) => {
+//     res.send({data});
+//     //res.render("data/data", {data});
+//   },(err) => {
+//     res.status(400).send(err);
+//   })
+// });
 
 
 router.post("/", authenticate, function(req, res){
