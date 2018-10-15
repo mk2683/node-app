@@ -74,8 +74,8 @@ router.post('/forgotpassword', function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'SendGrid',
         auth: {
-          user: 'mk2683',
-          pass: 'mohit2683'
+          user: 'hobbyaccount89',
+          pass: '123456789hello'
         }
       });
       var mailOptions = {
@@ -87,6 +87,7 @@ router.post('/forgotpassword', function(req, res, next) {
           'http://' + req.headers.host + '/resetpassword/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
+
 
       smtpTransport.sendMail(mailOptions, function(err) {
         console.log('An e-mail has been sent to ' + user.email + ' with further instructions.');
@@ -135,8 +136,8 @@ router.post('/resetpassword/:token', function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'SendGrid',
         auth: {
-          user: 'mk2683',
-          pass: 'mohit2683'
+          user: 'hackintoreality',
+          pass: 'potatohacker83'
         }
       });
       var mailOptions = {
