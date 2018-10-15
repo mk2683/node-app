@@ -6,19 +6,16 @@ var {Profile}     = require("../models/profile");
 var {authenticate} = require("../middlewares/authenticate");
 
 
-// router.post("/profile",(req, res) => {
-//   //console.log(req.body.email);
-//   var body = _.pick(req.body, ["firstName", "lastName", "designation", "hospitalName", "city", "country"]);
-
-//   var newProfile = new Profile(body);
-
-//   newProfile.save().then(() => {
-//     return res.status(200).send("success");
-//   }).catch((e) => {
-//     console.log(e);
-//     res.status(400).send(e);
-//   })
-// });
+router.get("/", authenticate, (req, res) => {
+  Profile.find({
+    user: req.user._id
+  }).then((data) => {
+    res.send({data});
+    //res.render("data/data", {data});
+  },(err) => {
+    res.status(400).send(err);
+  })
+});
 
 
 router.post("/", authenticate, function(req, res){
