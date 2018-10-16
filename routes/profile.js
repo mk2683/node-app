@@ -43,8 +43,12 @@ router.post("/", [authenticate, upload.single('avatar')], function(req, res){
     var city = req.body.city;
     var country = req.body.country;
     var user = req.user._id;
-    var avatarPath = req.file.path;
-    var avatarName = req.file.filename;
+    // var avatarPath = req.file.path;
+    // var avatarName = req.file.filename;
+
+    var avatarPath = "uploads/1539691455295.png";
+    var avatarName = "1539691455295.png";
+
 
     var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, avatarPath:avatarPath, avatarName: avatarName, user:user};
 
