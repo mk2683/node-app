@@ -22,10 +22,10 @@ var upload = multer({
 
 
 router.get("/", authenticate, (req, res) => {
-    console.log(req.user);
+    //console.log(req.user);
 
     Post.find({
-      user : req.user._id
+      postBy : req.user._id
 
     }).then((data) => {
       console.log(data);
