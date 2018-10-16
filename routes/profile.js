@@ -1,9 +1,23 @@
-var express = require("express");
-var router = express.Router();
-var _          = require("lodash");
+const express = require("express");
+const router = express.Router();
+const _          = require("lodash");
+const multer = require("multer");
 
-var {Profile}     = require("../models/profile");
-var {authenticate} = require("../middlewares/authenticate");
+const {Profile}     = require("../models/profile");
+const {authenticate} = require("../middlewares/authenticate");
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + ".png");
+    }
+});
+
+var upload = multer({
+ storage: storage
+});
 
 
 router.get("/", authenticate, (req, res) => {
@@ -15,22 +29,25 @@ router.get("/", authenticate, (req, res) => {
   }).then((data) => {
     console.log(data);
     res.send({data});
-    //res.render("data/data", {data});
   },(err) => {
     res.status(400).send(err);
   })
 });
 
 
-router.post("/", authenticate, function(req, res){
+router.post("/", [authenticate, upload.single('avatar')], function(req, res){
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var designation = req.body.designation;
     var hospitalName = req.body.hospitalName;
     var city = req.body.city;
     var country = req.body.country;
-    var user = req.user._id
-    var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, user:user};
+    var user = req.user._id;
+    var avatarPath = req.file.path;
+    var avatarName = req.file.filename;
+
+    var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, avatarPath:avatarPath, avatarName: avatarName, user:user};
+
     Profile.create(newProfile, function(err, newlyCreated){
         if(err){
             console.log(err);
@@ -42,6 +59,5 @@ router.post("/", authenticate, function(req, res){
         }
     });
 });
-
 
 module.exports = router;
