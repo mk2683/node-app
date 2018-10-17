@@ -52,7 +52,21 @@ var postSchema = new mongoose.Schema({
 
 	userAvatarPath: {
 		type : String
-	}
+	},
+
+	likes : {
+		id: {
+			type: mongoose.Schema.Types.ObjectId,
+    		ref: "Likes"
+		},
+		count : Number,
+		users : String
+	},
+
+	comments : {
+		type: mongoose.Schema.Types.ObjectId,
+    	ref: "Comments"
+	},
 });
 
 

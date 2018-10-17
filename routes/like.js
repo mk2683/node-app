@@ -4,8 +4,8 @@ const _          = require("lodash");
 const multer = require("multer");
 
 const {Profile} = require("../models/profile");
-const {Post} = require("../models/post");
 const {Like} = require("../models/likes");
+const {Post} = require("../models/post");
 const {authenticate} = require("../middlewares/authenticate");
 
 
@@ -36,33 +36,27 @@ router.get("/", authenticate, (req, res) => {
 });
 
 
-router.post("/", [authenticate, upload.single('image')], function(req, res){
-
+router.post("/:postid/like", [authenticate, upload.single('image')], function(req, res){
     Profile.find({user : req.user._id }).then((data) => {
         var {firstName} = data[0];
         var {lastName}  = data[0];
-        var postBy = firstName + " " + lastName;
-        var {designation} = data[0];
+        var likeBy = firstName + " " + lastName;
+        console.log(req.body);
+        console.log(req.body.likesCount);
+        var likesCount = Number(req.body.likesCount) + 1;
         var {avatarPath} = data[0];
+        var postId = req.params.postid;
 
-        var postText = req.body.postText;
+        Post.find({_id : postId}).then((record) => {
+            record.likes.count = likesCount;
+            record.likes.users = likeBy;
+            record.save();
+        }, (e) => {
+            console.log(e);
+        })
 
-        var imagePath = null;
-        var imageName = null;
-        var videoPath = null;
-        var videoName = null;
-
-        // var imagePath = req.file.path;
-        // var imageName = req.file.filename;
-        // var videoPath = req.file.path;
-        // var videoName = req.file.filename;
-        var privacy = req.body.privacy;
-        var postById = req.user._id;
-
-
-        var newPost = {postText: postText, imagePath: imagePath, imageName: imageName, videoPath: videoPath, videoName: videoName, privacy: privacy, postBy:postBy, postById: postById, userDesignation: designation, userAvatarPath: avatarPath};
-
-        Post.create(newPost, function(err, newlyCreated){
+        var newLike = {postId: postId, likeBy: likeBy, likesCount: likesCount, avatarPath: avatarPath};
+        Like.create(newLike, function(err, newlyCreated){
             if(err){
                 console.log(err);
                 //req.flash("error","Something went wrong!");
