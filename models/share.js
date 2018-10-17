@@ -1,33 +1,33 @@
 var mongoose = require("mongoose");
 
-var postSchema = new mongoose.Schema({
-	postText : {
+var shareSchema = new mongoose.Schema({
+	shareText : {
 		type : String,
 	},
 
-	imagePath: {
+	shareImagePath: {
 		type: String,
 		trim: true,
 		default : null
 	},
 
-	imageName: {
+	shareImageName: {
 		type: String,
 		default : null
 	},
 
-	videoPath: {
+	shareVideoPath: {
 		type: String,
 		trim: true,
 		default : null
 	},
 
-	videoName: {
+	shareVideoName: {
 		type: String,
 		default : null
 	},
 
-	privacy : {
+	sharePrivacy : {
 		type : Number,
 		default : 1
 	},
@@ -37,15 +37,20 @@ var postSchema = new mongoose.Schema({
 		default: Date.now()
 	},
 
-	postBy : {
+	postId : {
+		type: mongoose.Schema.Types.ObjectId,
+    	ref: "Post"
+	},
+
+	shareBy : {
 		type: mongoose.Schema.Types.ObjectId,
     	ref: "User"
 	}
 });
 
 
-var Post = mongoose.model("Post", postSchema);
+var Share = mongoose.model("Share", ShareSchema);
 
 module.exports = {
-	Post
+	Share
 }
