@@ -54,6 +54,14 @@ var postSchema = new mongoose.Schema({
 		type : String
 	},
 
+	likesCount: {
+		type : Number
+	},
+
+	commentsCount: {
+		type : Number
+	},
+
 	likes : [
       {
          type: mongoose.Schema.Types.ObjectId,

@@ -36,13 +36,15 @@ router.get("/", authenticate, (req, res) => {
 });
 
 router.get("/:id", authenticate, function(req, res){
-    Post.findById(req.params.id).populate("comments").populate("likes").exec(function(err, foundPost){
+    Post.findById(req.params.id).populate("comments").populate("likes").exec(function(err, post){
         if(err){
             console.log(err);
             //req.flash("error","Something went wrong!");
             res.status(400).send(err);
         } else {
-            res.status(200).send({post: foundPost});
+            post.likesCount = post.likes.length;
+            post.commentsCount = post.comments.length;
+            res.status(200).send(post);
         }
     });
 });

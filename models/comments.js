@@ -5,12 +5,12 @@ var commentSchema = new mongoose.Schema({
 		type: String
 	},
 
-	author: {
+	user: {
 		id: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Profile"
 		},
-		username: String
+		name: String
 	}
 });
 

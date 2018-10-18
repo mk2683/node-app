@@ -2,12 +2,12 @@ var mongoose = require("mongoose");
 
 var likeSchema = new mongoose.Schema({
 
-	author: {
+	user: {
 		id: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Profile"
 		},
-		username: String
+		name: String
 	}
 });
 

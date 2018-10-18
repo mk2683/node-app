@@ -14,25 +14,12 @@ var storage = multer.diskStorage({
         cb(null, 'uploads/')
     },
     filename: function(req, file, cb) {
-        cb(null, "post_" + Date.now() + ".png");
+        cb(null, "like_" + Date.now() + ".png");
     }
 });
 
 var upload = multer({
  storage: storage
-});
-
-
-router.get("/", authenticate, (req, res) => {
-    //console.log(req.user);
-    Post.find({
-      postById : req.user._id
-    }).then((data) => {
-      //console.log(data);
-      res.send({data});
-    },(err) => {
-      res.status(400).send(err);
-    })
 });
 
 
@@ -60,8 +47,8 @@ router.post("/post/:id/likes", [authenticate, upload.single('image')], function(
                    console.log(error);
                    res.status(400).send("Something went wrong!");
                } else {
-                   like.author.id = req.user._id;
-                   like.author.username = likeBy;
+                   like.user.id = req.user._id;
+                   like.user.name = likeBy;
                    like.save();
                    post.likes.push(like);
                    post.save();
