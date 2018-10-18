@@ -54,19 +54,19 @@ var postSchema = new mongoose.Schema({
 		type : String
 	},
 
-	likes : {
-		id: {
-			type: mongoose.Schema.Types.ObjectId,
-    		ref: "Likes"
-		},
-		count : Number,
-		users : String
-	},
+	likes : [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Like"
+      }
+    ],
 
-	comments : {
-		type: mongoose.Schema.Types.ObjectId,
-    	ref: "Comments"
-	},
+	comments: [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Comment"
+      }
+   ]
 });
 
 
@@ -75,3 +75,12 @@ var Post = mongoose.model("Post", postSchema);
 module.exports = {
 	Post
 }
+
+// likesCount : {
+// 		type : Number,
+// 		default :0
+// 	},
+
+// 	likesUsers : {
+// 		type : String
+// },

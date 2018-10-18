@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const {Profile} = require("../models/profile");
 const {Post} = require("../models/post");
-const {Like} = require("../models/likes");
+const {Comment} = require("../models/comments");
 const {authenticate} = require("../middlewares/authenticate");
 
 
@@ -36,12 +36,12 @@ router.get("/", authenticate, (req, res) => {
 });
 
 
-router.post("/post/:id/likes", [authenticate, upload.single('image')], function(req, res){
+router.post("/post/:id/comments", [authenticate, upload.single('image')], function(req, res){
 
     Profile.find({user : req.user._id }).then((data) => {
         var {firstName} = data[0];
         var {lastName}  = data[0];
-        var likeBy = firstName + " " + lastName;
+        var commentBy = firstName + " " + lastName;
         var {designation} = data[0];
         var {avatarPath} = data[0];
         //console.log(req.params.id);
@@ -51,21 +51,20 @@ router.post("/post/:id/likes", [authenticate, upload.single('image')], function(
                console.log(err);
            } else {
               //console.log(post);
-              // var count = req.body.count;
-              // count = count + 1;
-              // var newLike = {count : count};
-            Like.create(req.body, function(error, like){
+              var text = req.body.text;
+              var newComment = {text : text};
+            Comment.create(newComment, function(error, comment){
                if(error){
                    //req.flash("error","Something went wrong!");
                    console.log(error);
                    res.status(400).send("Something went wrong!");
                } else {
-                   like.author.id = req.user._id;
-                   like.author.username = likeBy;
-                   like.save();
-                   post.likes.push(like);
+                   comment.author.id = req.user._id;
+                   comment.author.username = commentBy;
+                   comment.save();
+                   post.comments.push(comment);
                    post.save();
-                   //req.flash("success","Successfully added like!");
+                   //req.flash("success","Successfully added comment!");
                    res.status(200).send("success");
                }
             });

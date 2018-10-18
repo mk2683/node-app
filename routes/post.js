@@ -35,6 +35,18 @@ router.get("/", authenticate, (req, res) => {
     })
 });
 
+router.get("/:id", authenticate, function(req, res){
+    Post.findById(req.params.id).populate("comments").populate("likes").exec(function(err, foundPost){
+        if(err){
+            console.log(err);
+            //req.flash("error","Something went wrong!");
+            res.status(400).send(err);
+        } else {
+            res.status(200).send({post: foundPost});
+        }
+    });
+});
+
 
 router.post("/", [authenticate, upload.single('image')], function(req, res){
 

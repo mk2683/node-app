@@ -1,0 +1,757 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"re",
+				"re\trequire"
+			],
+			[
+				"if",
+				"ife\tif … else"
+			],
+			[
+				"po",
+				"postBy"
+			],
+			[
+				"pos",
+				"postByID"
+			],
+			[
+				"ava",
+				"avatarPath"
+			],
+			[
+				"p",
+				"password"
+			],
+			[
+				"se",
+				"send"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"add",
+				"add_page_to_index"
+			],
+			[
+				"co",
+				"content"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"a",
+				"appRoot"
+			],
+			[
+				"S",
+				"Successfully"
+			],
+			[
+				"C",
+				"Campground"
+			],
+			[
+				"ca",
+				"campgrounds"
+			],
+			[
+				"comm",
+				"comment_id"
+			],
+			[
+				"e",
+				"edit"
+			],
+			[
+				"req",
+				"req"
+			],
+			[
+				"c",
+				"campgrounds"
+			],
+			[
+				"m",
+				"methodOverride"
+			],
+			[
+				"i",
+				"indexRoute"
+			],
+			[
+				"lo",
+				"login"
+			],
+			[
+				"new",
+				"newUser"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"de",
+				"deserializeUser"
+			],
+			[
+				"pa",
+				"passportLocalMongoose"
+			],
+			[
+				"mo",
+				"models"
+			],
+			[
+				"camp",
+				"campground"
+			],
+			[
+				"cam",
+				"campgrounds"
+			],
+			[
+				"com",
+				"comment"
+			],
+			[
+				"fin",
+				"findById"
+			],
+			[
+				"fo",
+				"form\tTag"
+			],
+			[
+				"ge",
+				"generteMessgage"
+			],
+			[
+				"ues",
+				"user"
+			],
+			[
+				"u",
+				"user"
+			],
+			[
+				"userT",
+				"userTwoId"
+			],
+			[
+				"use",
+				"userOneId"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"find",
+				"findOne"
+			],
+			[
+				"to",
+				"toBeTruthy"
+			],
+			[
+				"P",
+				"POST"
+			],
+			[
+				"hash",
+				"hashedPassword"
+			],
+			[
+				"b",
+				"bcrypt"
+			],
+			[
+				"token",
+				"tokens"
+			],
+			[
+				"_",
+				"_id"
+			],
+			[
+				"valida",
+				"validator"
+			],
+			[
+				"fi",
+				"findById"
+			],
+			[
+				"s",
+				"send"
+			],
+			[
+				"sa",
+				"status"
+			],
+			[
+				"o",
+				"ObjectID"
+			],
+			[
+				"Mo",
+				"mongodb"
+			],
+			[
+				"lat",
+				"latitude"
+			],
+			[
+				"get",
+				"getGeocode"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"en",
+				"encodedAddress"
+			],
+			[
+				"geo",
+				"geocode"
+			],
+			[
+				"A",
+				"Adress"
+			],
+			[
+				"adress",
+				"address"
+			],
+			[
+				"r",
+				"request"
+			],
+			[
+				"ti",
+				"titleOption"
+			],
+			[
+				"n",
+				"note"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"t",
+				"title"
+			],
+			[
+				"no",
+				"notesString"
+			],
+			[
+				"note",
+				"noteString"
+			],
+			[
+				"wiki",
+				"wikipedia-links"
+			],
+			[
+				"art",
+				"article"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"ht",
+				"http"
+			],
+			[
+				"ar",
+				"article"
+			],
+			[
+				"nyt",
+				"nytHeaderElem"
+			],
+			[
+				"nt",
+				"nytUrl"
+			],
+			[
+				"api",
+				"api-key"
+			],
+			[
+				"g",
+				"greeting"
+			],
+			[
+				"city",
+				"cityData"
+			],
+			[
+				"st",
+				"streetData"
+			],
+			[
+				"data",
+				"data2"
+			],
+			[
+				"cl",
+				"classed"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"pr",
+				"property"
+			],
+			[
+				"sort",
+				"sorted"
+			],
+			[
+				"ro",
+				"router"
+			],
+			[
+				"ce",
+				"csrfProtection"
+			],
+			[
+				"ex",
+				"express"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"pro",
+				"productRow"
+			],
+			[
+				"roe",
+				"rowSize"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"pu",
+				"pull-left"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"sc",
+				"Schema"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"express",
+				"expressHbs"
+			],
+			[
+				"d",
+				"django"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "like.js",
+			"settings":
+			{
+				"buffer_size": 2144,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"About"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: Add Channel"
+			],
+			[
+				"eslint",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"emacs",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Contr",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 479.0
+	},
+	"console":
+	{
+		"height": 164.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"npm install express-session"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/mohit/Desktop/MediEdge",
+		"/home/mohit/Desktop/MediEdge/routes"
+	],
+	"file_history":
+	[
+		"/home/mohit/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/mohit/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/mohit/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/mohit/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/mohit/Desktop/MediEdge/models/share.js",
+		"/home/mohit/Desktop/MediEdge/models/comment.js",
+		"/home/mohit/Desktop/MediEdge/middlewares/authenticate.js",
+		"/home/mohit/Desktop/MediEdge/server.js",
+		"/home/mohit/Desktop/MediEdge/routes/post.js",
+		"/home/mohit/Desktop/MediEdge/models/profile.js",
+		"/home/mohit/Desktop/MediEdge/routes/profile.js",
+		"/home/mohit/Desktop/MediEdge/.gitignore",
+		"/home/mohit/Desktop/MediEdge/package.json",
+		"/home/mohit/Desktop/MediEdge backend/.gitignore",
+		"/home/mohit/Desktop/cbir/index.py",
+		"/home/mohit/Desktop/cbir/imutils",
+		"/home/mohit/Desktop/cbir/colordescriptor.py",
+		"/home/mohit/Documents/Document 1/TCS/tcs interview/tcs digital",
+		"/home/mohit/Desktop/Assigment/array/largestSmallest2.java",
+		"/home/mohit/Desktop/Todo-app/server.js",
+		"/home/mohit/Desktop/Todo-app/server/config/config.js",
+		"/home/mohit/Desktop/Assigment/convertAlphabet.java",
+		"/home/mohit/Desktop/Assigment/checkSi.java",
+		"/home/mohit/Desktop/React/indecision app/public/script/app.js",
+		"/home/mohit/.config/sublime-text-3/Packages/ColorPicker/ColorPicker.sublime-settings",
+		"/home/mohit/.config/sublime-text-3/Packages/User/ColorPicker.sublime-settings",
+		"/home/mohit/Desktop/React/indecision app/package.json",
+		"/home/mohit/Desktop/React/indecision app/yarn.lock",
+		"/home/mohit/Desktop/Todo-app/views/todos/todos.ejs",
+		"/home/mohit/Desktop/Todo-app/server/server.js",
+		"/home/mohit/Desktop/Todo-app/views/landing.ejs",
+		"/home/mohit/Desktop/Todo-app/public/index.html",
+		"/home/mohit/Desktop/node-todo-master/public/js/controllers/main.js",
+		"/home/mohit/Desktop/node-todo-master/public/js/services/todos.js",
+		"/home/mohit/Desktop/node-todo-master/server.js",
+		"/home/mohit/Desktop/node-todo-master/app/routes.js",
+		"/home/mohit/Desktop/node-todo-master/public/index.html",
+		"/home/mohit/Desktop/node-todo-master/.gitignore",
+		"/home/mohit/Desktop/v2/package.json",
+		"/home/mohit/Desktop/v2/app.js",
+		"/home/mohit/Desktop/v2/routes/index.js",
+		"/home/mohit/Desktop/v2/views/campgrounds/new.ejs",
+		"/home/mohit/Desktop/v2/views/campgrounds/show.ejs",
+		"/home/mohit/Desktop/v2/views/register.ejs",
+		"/home/mohit/Desktop/v2/views/login.ejs",
+		"/home/mohit/Desktop/v2/views/campgrounds/edit.ejs",
+		"/home/mohit/Desktop/v2/public/stylesheets/landing.css",
+		"/home/mohit/Desktop/v2/views/landing.ejs",
+		"/home/mohit/Desktop/v2/views/campgrounds/index.ejs",
+		"/home/mohit/Desktop/v2/views/partials/header.ejs",
+		"/home/mohit/Desktop/v2/public/stylesheets/app.css",
+		"/home/mohit/Desktop/v2/.gitignore",
+		"/home/mohit/Desktop/v2/routes/campground.js",
+		"/home/mohit/Desktop/v2/models/campground.js",
+		"/home/mohit/Desktop/v2/middlewares/index.js",
+		"/home/mohit/Desktop/v2/routes/comment.js",
+		"/home/mohit/Desktop/v2/views/comments/edit.ejs",
+		"/home/mohit/Desktop/v2/seed/seed.js",
+		"/home/mohit/Desktop/v2/models/comment.js",
+		"/home/mohit/Desktop/v2/models/user.js",
+		"/home/mohit/Desktop/v2/views/comments/new.ejs",
+		"/home/mohit/Desktop/v2/views/show.ejs",
+		"/home/mohit/Desktop/v2/views/campground.ejs",
+		"/home/mohit/Desktop/v2/views/home.ejs",
+		"/home/mohit/Desktop/v2/views/new.ejs",
+		"/home/mohit/Desktop/minicourse-ajax-project/index.html",
+		"/home/mohit/Desktop/Shopping_Cart/views/users/profile.hbs",
+		"/home/mohit/Desktop/chat-app/public/index.html",
+		"/home/mohit/Desktop/chat-app/server/server.js",
+		"/home/mohit/Desktop/chat-app/public/js/index.js",
+		"/home/mohit/Desktop/chat-app/server/utils/generateMessage.test.js",
+		"/home/mohit/Desktop/chat-app/server/utils/generateMessage.js",
+		"/home/mohit/Desktop/chat-app/package.json",
+		"/home/mohit/Desktop/chat-app/.gitignore",
+		"/home/mohit/Desktop/Todo-app/server/tests/server.test.js",
+		"/home/mohit/Desktop/Todo-app/server/tests/seed/seed.js",
+		"/home/mohit/Desktop/Todo-app/.gitignore",
+		"/home/mohit/Desktop/Todo-app/server/config/config.json",
+		"/home/mohit/Desktop/Todo-app/server/models/todo.js",
+		"/home/mohit/Desktop/Todo-app/server/middlewares/authenticate.js",
+		"/home/mohit/Desktop/Todo-app/playground/hashing.js",
+		"/home/mohit/Desktop/Todo-app/server/db/mongoose.js",
+		"/home/mohit/Desktop/Todo-app/playground/mongodb-update.js",
+		"/home/mohit/Desktop/Todo-app/playground/mongodb-find.js",
+		"/home/mohit/Desktop/Todo-app/playground/mongodb-delete.js",
+		"/home/mohit/Desktop/Todo-app/playground/mongodb-connect.js",
+		"/home/mohit/Desktop/Todo-app/package.json",
+		"/home/mohit/Desktop/Todo-app/node_modules/supertest/lib/test.js",
+		"/home/mohit/Desktop/Todo-app/server/test/server.test.js",
+		"/home/mohit/Desktop/Todo-app/server/models/user.js",
+		"/home/mohit/Desktop/Todo-app/mongodb-connect.js",
+		"/home/mohit/Desktop/weather-app/package.json",
+		"/home/mohit/Desktop/notes_app/data.json",
+		"/usr/lib/xorg/Xorg",
+		"/home/mohit/Desktop/D3/Frequency Counter/index.html",
+		"/home/mohit/Desktop/Shopping_Cart/views/layouts/layout.hbs",
+		"/home/mohit/Desktop/Shopping_Cart/views/partials/header.hbs",
+		"/home/mohit/Desktop/Shopping_Cart/views/users/signin.hbs",
+		"/home/mohit/Desktop/Shopping_Cart/models/product.js",
+		"/home/mohit/Desktop/Shopping_Cart/views/layout.hbs",
+		"/home/mohit/Desktop/mysite/mysite/settings.py",
+		"/home/mohit/Desktop/mysite/answers/admin.py",
+		"/home/mohit/Desktop/mysite/mysite/wsgi.py",
+		"/home/mohit/Desktop/Desktop 1/AlgoCasts/completed_exercises/reversestring/index.js"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/home/mohit/Desktop/MediEdge"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "like.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1652,
+								1651
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 43.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 94.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 193.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

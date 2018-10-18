@@ -1,24 +1,13 @@
 var mongoose = require("mongoose");
 
 var likeSchema = new mongoose.Schema({
-	postId: {
-		type : String,
-	},
 
-	likesCount: {
-		type: Number,
-		default : 0
-	},
-
-	likeBy: {
-		type: String,
-		default : null
-	},
-
-	likeUserAvatarPath: {
-		type: String,
-		trim: true,
-		default : null
+	author: {
+		id: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Profile"
+		},
+		username: String
 	}
 });
 
@@ -28,3 +17,7 @@ var Like = mongoose.model("Like", likeSchema);
 module.exports = {
 	Like
 }
+
+// count: {
+// 		type: Number
+// 	},

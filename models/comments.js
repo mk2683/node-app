@@ -1,28 +1,16 @@
 var mongoose = require("mongoose");
 
 var commentSchema = new mongoose.Schema({
-	postId: {
-		type : String
-	},
-
-	commentText: {
+	text: {
 		type: String
 	},
 
-	commentCount: {
-		type: Number,
-		default : 0
-	},
-
-	commentUserName: {
-		type: String,
-		default : null
-	},
-
-	commentUserAvatarPath: {
-		type: String,
-		trim: true,
-		default : null
+	author: {
+		id: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Profile"
+		},
+		username: String
 	}
 });
 
