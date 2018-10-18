@@ -10,7 +10,11 @@ var commentSchema = new mongoose.Schema({
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Profile"
 		},
-		name: String
+		name: String,
+		commentedOn: {
+			type: Date,
+			default: Date.now()
+		},
 	}
 });
 
