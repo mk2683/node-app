@@ -11,7 +11,7 @@ var profileSchema = new mongoose.Schema({
 	lastName : {
 		type : String,
 		required : true,
-		minlength : 1,
+		minlength : 1
 	},
 
 	designation : {

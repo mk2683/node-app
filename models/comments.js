@@ -11,6 +11,8 @@ var commentSchema = new mongoose.Schema({
 			ref: "Profile"
 		},
 		name: String,
+		designation: String,
+		avatarPath: String,
 		commentedOn: {
 			type: Date,
 			default: Date.now()

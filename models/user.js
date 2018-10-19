@@ -37,7 +37,13 @@ var userSchema = new mongoose.Schema({
 
 	resetPasswordToken: String,
 
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date,
+
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Profile"
+    }
+
 })
 
 userSchema.methods.toJSON = function (){

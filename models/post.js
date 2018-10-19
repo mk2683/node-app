@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var postSchema = new mongoose.Schema({
 	postText : {
-		type : String,
+		type : String
 	},
 
 	imagePath: {
@@ -55,11 +55,13 @@ var postSchema = new mongoose.Schema({
 	},
 
 	likesCount: {
-		type : Number
+		type : Number,
+		default: 0
 	},
 
 	commentsCount: {
-		type : Number
+		type : Number,
+		default: 0
 	},
 
 	likes : [
@@ -83,12 +85,3 @@ var Post = mongoose.model("Post", postSchema);
 module.exports = {
 	Post
 }
-
-// likesCount : {
-// 		type : Number,
-// 		default :0
-// 	},
-
-// 	likesUsers : {
-// 		type : String
-// },

@@ -7,7 +7,9 @@ var likeSchema = new mongoose.Schema({
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Profile"
 		},
-		name: String
+		name: String,
+		designation: String,
+		avatarPath: String
 	}
 });
 
@@ -18,6 +20,3 @@ module.exports = {
 	Like
 }
 
-// count: {
-// 		type: Number
-// 	},

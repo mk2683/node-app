@@ -52,13 +52,18 @@ router.get("/:id", authenticate, function(req, res){
 
 router.post("/", [authenticate, upload.single('image')], function(req, res){
 
-    Profile.find({user : req.user._id }).then((data) => {
-        var {firstName} = data[0];
-        var {lastName}  = data[0];
+    // Profile.find({user : req.user._id }).then((data) => {
+    //     var {firstName} = data[0];
+    //     var {lastName}  = data[0];
+    //     var postBy = firstName + " " + lastName;
+    //     var {designation} = data[0];
+    //     var {avatarPath} = data[0];
+        //console.log("Profile::-"+req.user.profile);
+        var firstName = req.user.profile.firstName;
+        var lastName = req.user.profile.lastName;
         var postBy = firstName + " " + lastName;
-        var {designation} = data[0];
-        var {avatarPath} = data[0];
-
+        var {designation} = req.user.profile;
+        var {avatarPath} = req.user.profile;
         var postText = req.body.postText;
 
         var imagePath = null;
@@ -86,9 +91,9 @@ router.post("/", [authenticate, upload.single('image')], function(req, res){
                 res.status(200).send("success");
             }
         });
-    },(err) => {
-        console.log(err);
-    })
+    // },(err) => {
+    //     console.log(err);
+    // })
 });
 
 module.exports = router;

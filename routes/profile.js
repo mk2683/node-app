@@ -4,6 +4,7 @@ const _          = require("lodash");
 const multer = require("multer");
 
 const {Profile}     = require("../models/profile");
+const {User}     = require("../models/user");
 const {authenticate} = require("../middlewares/authenticate");
 
 var storage = multer.diskStorage({
@@ -21,17 +22,15 @@ var upload = multer({
 
 
 router.get("/", authenticate, (req, res) => {
-      console.log(req.user);
-
-  Profile.find({
-    user : req.user._id
-
-  }).then((data) => {
-    console.log(data);
-    res.send({data});
-  },(err) => {
-    res.status(400).send(err);
-  })
+    //console.log(req.user);
+    Profile.find({
+        user : req.user._id
+    }).then((data) => {
+        console.log(data);
+        res.send({data});
+    },(err) => {
+        res.status(400).send(err);
+    })
 });
 
 
@@ -49,19 +48,25 @@ router.post("/", [authenticate, upload.single('avatar')], function(req, res){
     var avatarPath = "uploads/1539691455295.png";
     var avatarName = "1539691455295.png";
 
-
-    var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, avatarPath:avatarPath, avatarName: avatarName, user:user};
-
-    Profile.create(newProfile, function(err, newlyCreated){
-        if(err){
+    User.findById(req.user._id, (err, user) => {
+        if (err) {
             console.log(err);
-            //req.flash("error","Something went wrong!");
-            res.status(400).send("Something went wrong!");
         } else {
-            //req.flash("success","Profile successfully added");
-            res.status(200).send("success");
+            var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, avatarPath:avatarPath, avatarName: avatarName, user:user};
+            Profile.create(newProfile, function(err, newlyCreated){
+                if(err){
+                    console.log(err);
+                    //req.flash("error","Something went wrong!");
+                    res.status(400).send("Something went wrong!");
+                } else {
+                    //req.flash("success","Profile successfully added");
+                    user.profile = newlyCreated;
+                    user.save();
+                    res.status(200).send("success");
+                }
+            });
         }
-    });
+    })
 });
 
 module.exports = router;

@@ -25,12 +25,11 @@ var upload = multer({
 
 router.post("/post/:id/comments", [authenticate, upload.single('image')], function(req, res){
 
-    Profile.find({user : req.user._id }).then((data) => {
-        var {firstName} = data[0];
-        var {lastName}  = data[0];
+        var firstName = req.user.profile.firstName;
+        var lastName = req.user.profile.lastName;
         var commentBy = firstName + " " + lastName;
-        var {designation} = data[0];
-        var {avatarPath} = data[0];
+        var {designation} = req.user.profile;
+        var {avatarPath} = req.user.profile;
         //console.log(req.params.id);
         Post.findById(req.params.id, function(err, post){
            if(err){
@@ -48,6 +47,8 @@ router.post("/post/:id/comments", [authenticate, upload.single('image')], functi
                } else {
                    comment.user.id = req.user._id;
                    comment.user.name = commentBy;
+                   comment.user.designation = designation;
+                   comment.user.avatarPath = avatarPath;
                    comment.save();
                    post.comments.push(comment);
                    post.save();
@@ -57,9 +58,6 @@ router.post("/post/:id/comments", [authenticate, upload.single('image')], functi
             });
            }
       });
-    },(err) => {
-        console.log(err);
-    })
 });
 
 module.exports = router;

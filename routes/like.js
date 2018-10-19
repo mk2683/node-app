@@ -25,22 +25,17 @@ var upload = multer({
 
 router.post("/post/:id/likes", [authenticate, upload.single('image')], function(req, res){
 
-    Profile.find({user : req.user._id }).then((data) => {
-        var {firstName} = data[0];
-        var {lastName}  = data[0];
+        var firstName = req.user.profile.firstName;
+        var lastName = req.user.profile.lastName;
         var likeBy = firstName + " " + lastName;
-        var {designation} = data[0];
-        var {avatarPath} = data[0];
+        var {designation} = req.user.profile;
+        var {avatarPath} = req.user.profile;
         //console.log(req.params.id);
         Post.findById(req.params.id, function(err, post){
            if(err){
                //req.flash("error","Something went wrong!");
                console.log(err);
            } else {
-              //console.log(post);
-              // var count = req.body.count;
-              // count = count + 1;
-              // var newLike = {count : count};
             Like.create(req.body, function(error, like){
                if(error){
                    //req.flash("error","Something went wrong!");
@@ -49,6 +44,8 @@ router.post("/post/:id/likes", [authenticate, upload.single('image')], function(
                } else {
                    like.user.id = req.user._id;
                    like.user.name = likeBy;
+                   like.user.designation = designation;
+                   like.user.avatarPath = avatarPath;
                    like.save();
                    post.likes.push(like);
                    post.save();
@@ -58,9 +55,6 @@ router.post("/post/:id/likes", [authenticate, upload.single('image')], function(
             });
            }
       });
-    },(err) => {
-        console.log(err);
-    })
 });
 
 module.exports = router;
