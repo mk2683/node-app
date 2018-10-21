@@ -46,6 +46,16 @@ var profileSchema = new mongoose.Schema({
 		required: true
 	},
 
+	followers: {
+    	type: mongoose.Schema.Types.ObjectId,
+    	ref: "Follower"
+    },
+
+    following: {
+    	type: mongoose.Schema.Types.ObjectId,
+    	ref: "Following"
+    },
+
 	user: {
     	type: mongoose.Schema.Types.ObjectId,
     	ref: "User"

@@ -5,6 +5,8 @@ const multer = require("multer");
 
 const {Profile}     = require("../models/profile");
 const {User}     = require("../models/user");
+const {Follower}     = require("../models/followers");
+const {Following}     = require("../models/following");
 const {authenticate} = require("../middlewares/authenticate");
 
 var storage = multer.diskStorage({
@@ -26,7 +28,7 @@ router.get("/", authenticate, (req, res) => {
     Profile.find({
         user : req.user._id
     }).then((data) => {
-        console.log(data);
+        //console.log(data);
         res.send({data});
     },(err) => {
         res.status(400).send(err);
@@ -52,6 +54,10 @@ router.post("/", [authenticate, upload.single('avatar')], function(req, res){
         if (err) {
             console.log(err);
         } else {
+            user.userName = firstName + " " + lastName;
+            user.designation = designation;
+            user.avatarPath = avatarPath;
+            user.save();
             var newProfile = {firstName: firstName, lastName: lastName, designation: designation, hospitalName: hospitalName, city: city, country: country, avatarPath:avatarPath, avatarName: avatarName, user:user};
             Profile.create(newProfile, function(err, newlyCreated){
                 if(err){
@@ -60,13 +66,78 @@ router.post("/", [authenticate, upload.single('avatar')], function(req, res){
                     res.status(400).send("Something went wrong!");
                 } else {
                     //req.flash("success","Profile successfully added");
-                    user.profile = newlyCreated;
-                    user.save();
+                    // user.profile = newlyCreated;
+                    // user.save();
                     res.status(200).send("success");
                 }
             });
         }
     })
+});
+
+
+router.post("/follow/:userid", authenticate, function(req, res){
+    var userId = req.params.userid;
+    var {followerUserName} = req.user;
+    var {followerDesignation} = req.user;
+    var {followerAvatarPath} = req.user;
+    var followingUserName;
+    var followingDesignation;
+    var followingAvatarPath;
+    Profile.find({user: req.params.userid}, function(err, profile){
+        console.log(profile[0]);
+        if(err){
+           //req.flash("error","Something went wrong!");
+           console.log(err);
+        } else {
+            followingUserName = profile[0].firstName + " " + profile[0].lastName;
+            followingDesignation = profile[0].designation;
+            followingAvatarPath = profile[0].avatarPath;
+            Follower.create(req.body, function(error, newfollower){
+                if(error){
+                    //req.flash("error","Something went wrong!");
+                    console.log(error);
+                    res.status(400).send("Something went wrong!");
+                } else {
+                    newfollower.user.id = req.user._id;
+                    newfollower.user.name = followerUserName;
+                    newfollower.user.designation = followerDesignation;
+                    newfollower.user.avatarPath = followerAvatarPath;
+                    newfollower.save();
+                    profile[0].followers = newfollower;
+                    console.log(profile[0]);
+                    profile.save();
+                    //req.flash("success","Successfully added follower!");
+                    res.status(200).send("success");
+                }
+            });
+        }
+    });
+
+    Profile.findById(req.user._id, function(err, profile1){
+        if(err){
+           //req.flash("error","Something went wrong!");
+           console.log(err);
+        } else {
+            Following.create(req.body, function(error, newfollowing){
+                if(error){
+                    //req.flash("error","Something went wrong!");
+                    console.log(error);
+                    res.status(400).send("Something went wrong!");
+                } else {
+                    newfollowing.user.id = req.params.userid;
+                    newfollowing.user.name = followingUserName;
+                    newfollowing.user.designation = followingDesignation;
+                    newfollowing.user.avatarPath = followingAvatarPath;
+                    newfollowing.save();
+                    profile1[0].following = newfollowing;
+                    profile1.save();
+                    //req.flash("success","Successfully added following!");
+                    res.status(200).send("success");
+                }
+            });
+        }
+    });
 });
 
 module.exports = router;

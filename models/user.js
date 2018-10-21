@@ -39,10 +39,16 @@ var userSchema = new mongoose.Schema({
 
     resetPasswordExpires: Date,
 
-    profile: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Profile"
-    }
+    userName: String,
+
+    designation: String,
+
+    avatarPath: String
+
+    // profile: {
+	//     type: mongoose.Schema.Types.ObjectId,
+	//     ref: "Profile"
+	// }
 
 })
 

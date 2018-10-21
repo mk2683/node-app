@@ -29,7 +29,7 @@ router.get("/", authenticate, (req, res) => {
       postById : req.user._id
     }).then((data) => {
       //console.log(data);
-      res.send({data});
+      res.send(data);
     },(err) => {
       res.status(400).send(err);
     })
@@ -52,18 +52,18 @@ router.get("/:id", authenticate, function(req, res){
 
 router.post("/", [authenticate, upload.single('image')], function(req, res){
 
-    // Profile.find({user : req.user._id }).then((data) => {
-    //     var {firstName} = data[0];
-    //     var {lastName}  = data[0];
-    //     var postBy = firstName + " " + lastName;
-    //     var {designation} = data[0];
-    //     var {avatarPath} = data[0];
-        //console.log("Profile::-"+req.user.profile);
-        var firstName = req.user.profile.firstName;
-        var lastName = req.user.profile.lastName;
-        var postBy = firstName + " " + lastName;
-        var {designation} = req.user.profile;
-        var {avatarPath} = req.user.profile;
+        // Profile.find({user : req.user._id }).then((data) => {
+        //     var {firstName} = data[0];
+        //     var {lastName}  = data[0];
+        //     var postBy = firstName + " " + lastName;
+        //     var {designation} = data[0];
+        //     var {avatarPath} = data[0];
+        // console.log("Profile::-"+req.user.profile);
+        // var firstName = req.user.profile.firstName;
+        // var lastName = req.user.profile.lastName;
+        var postBy = req.user.userName;
+        var {designation} = req.user;
+        var {avatarPath} = req.user;
         var postText = req.body.postText;
 
         var imagePath = null;

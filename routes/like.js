@@ -25,12 +25,15 @@ var upload = multer({
 
 router.post("/post/:id/likes", [authenticate, upload.single('image')], function(req, res){
 
-        var firstName = req.user.profile.firstName;
-        var lastName = req.user.profile.lastName;
-        var likeBy = firstName + " " + lastName;
-        var {designation} = req.user.profile;
-        var {avatarPath} = req.user.profile;
+        // var firstName = req.user.profile.firstName;
+        // var lastName = req.user.profile.lastName;
+        // var likeBy = firstName + " " + lastName;
+        // var {designation} = req.user.profile;
+        // var {avatarPath} = req.user.profile;
         //console.log(req.params.id);
+        var likeBy = req.user.userName;
+        var {designation} = req.user;
+        var {avatarPath} = req.user;
         Post.findById(req.params.id, function(err, post){
            if(err){
                //req.flash("error","Something went wrong!");
