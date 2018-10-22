@@ -29,7 +29,7 @@ router.get("/", authenticate, (req, res) => {
         user : req.user._id
     }).then((data) => {
         //console.log(data);
-        res.send({data});
+        res.send(data);
     },(err) => {
         res.status(400).send(err);
     })

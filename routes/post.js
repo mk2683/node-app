@@ -27,12 +27,21 @@ router.get("/", authenticate, (req, res) => {
     //console.log(req.user);
     Post.find({
       postById : req.user._id
-    }).then((data) => {
-      //console.log(data);
-      res.send(data);
-    },(err) => {
-      res.status(400).send(err);
-    })
+    }).populate("comments").populate("likes").exec(function(err, posts){
+        if(err){
+            console.log(err);
+            //req.flash("error","Something went wrong!");
+            res.status(400).send(err);
+        } else {
+            for (var i = 0; i < posts.length; i++) {
+                posts[i].likesCount = posts[i].likes.length;
+                posts[i].commentsCount = posts[i].comments.length;
+            }
+            //post.likesCount = post.likes.length;
+            //post.commentsCount = post.comments.length;
+            res.status(200).send(posts);
+        }
+    });
 });
 
 router.get("/:id", authenticate, function(req, res){
