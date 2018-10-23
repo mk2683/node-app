@@ -28,8 +28,8 @@ router.get("/", authenticate, (req, res) => {
     Profile.find({
         user : req.user._id
     }).then((data) => {
-        //console.log(data);
-        res.send(data);
+        console.log(data);
+        res.send(data[0]);
     },(err) => {
         res.status(400).send(err);
     })
@@ -68,7 +68,7 @@ router.post("/", [authenticate, upload.single('avatar')], function(req, res){
                     //req.flash("success","Profile successfully added");
                     // user.profile = newlyCreated;
                     // user.save();
-                    res.status(200).send("success");
+                    res.status(200).send(newlyCreated);
                 }
             });
         }

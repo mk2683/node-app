@@ -37,8 +37,6 @@ router.get("/", authenticate, (req, res) => {
                 posts[i].likesCount = posts[i].likes.length;
                 posts[i].commentsCount = posts[i].comments.length;
             }
-            //post.likesCount = post.likes.length;
-            //post.commentsCount = post.comments.length;
             res.status(200).send(posts);
         }
     });

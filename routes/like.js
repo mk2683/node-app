@@ -23,7 +23,7 @@ var upload = multer({
 });
 
 
-router.post("/post/:id/likes", [authenticate, upload.single('image')], function(req, res){
+router.post("/post/:id/likes", authenticate, function(req, res){
 
         // var firstName = req.user.profile.firstName;
         // var lastName = req.user.profile.lastName;
