@@ -23,12 +23,12 @@ var upload = multer({
 });
 
 
-router.get("/", authenticate, (req, res) => {
+router.get("/profile", authenticate, (req, res) => {
     //console.log(req.user);
     Profile.find({
         user : req.user._id
     }).then((data) => {
-        console.log(data);
+        console.log(data[0]);
         res.send(data[0]);
     },(err) => {
         res.status(400).send(err);
@@ -36,7 +36,7 @@ router.get("/", authenticate, (req, res) => {
 });
 
 
-router.post("/", [authenticate, upload.single('avatar')], function(req, res){
+router.post("/sendprofile", [authenticate, upload.single('avatar')], function(req, res){
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var designation = req.body.designation;
@@ -76,7 +76,7 @@ router.post("/", [authenticate, upload.single('avatar')], function(req, res){
 });
 
 
-router.post("/follow/:userid", authenticate, function(req, res){
+router.post("/profile/follow/:userid", authenticate, function(req, res){
     var userId = req.params.userid;
     var {followerUserName} = req.user;
     var {followerDesignation} = req.user;

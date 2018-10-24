@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash());
 
 app.use("/", indexRoute);
-app.use("/profile", profileRoute);
+app.use("/", profileRoute);
 app.use("/post", postRoute);
 app.use("/", likeRoute);
 app.use("/", commentRoute);
